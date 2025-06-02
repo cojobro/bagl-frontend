@@ -1,0 +1,52 @@
+.home-container {
+    padding: 1rem;
+}
+
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.hero-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #111827; /* gray-900 */
+    margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1rem;
+    color: #374151; /* gray-700 */
+    margin-bottom: 1rem;
+}
+
+.hero-search {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Featured Section */
+.featured-section {
+    margin-top: 2rem;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 1rem;
+}
+
+.featured-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+/* Desktop layout: 3 columns */
+@media (min-width: 768px) {
+    .featured-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

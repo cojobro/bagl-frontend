@@ -1,0 +1,77 @@
+.paper-card {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb; /* gray-200 */
+    border-radius: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: box-shadow 0.2s;
+}
+
+.paper-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.paper-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1f2937; /* gray-800 */
+    text-decoration: none;
+}
+
+.paper-title:hover {
+    text-decoration: underline;
+}
+
+.paper-authors,
+.paper-year {
+    font-size: 0.85rem;
+    color: #4b5563; /* gray-600 */
+    margin: 0.25rem 0;
+}
+
+.paper-tags {
+    margin-top: 0.5rem;
+}
+
+.paper-tag {
+    display: inline-block;
+    background-color: #d1fae5; /* green-100 */
+    color: #065f46; /* green-800 */
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.75rem;
+    margin-right: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.card-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.action-button {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem 0;
+    background-color: #2563eb; /* blue-600 */
+    color: white;
+    border-radius: 0.375rem;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.action-button.secondary {
+    background-color: #e5e7eb; /* gray-200 */
+    color: #1f2937; /* gray-800 */
+}
+
+.action-button.secondary:hover {
+    background-color: #d1d5db; /* gray-300 */
+}
+
+.action-button:hover {
+    opacity: 0.9;
+}

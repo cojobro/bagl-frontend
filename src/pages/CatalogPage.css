@@ -1,0 +1,64 @@
+.catalog-container {
+    padding: 1rem;
+}
+
+/* Title */
+.catalog-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827; /* gray-900 */
+    margin-bottom: 1rem;
+}
+
+/* Layout: mobile‐first—stacked */
+.catalog-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Sidebar takes full width on mobile */
+.sidebar-wrapper {
+    width: 100%;
+}
+
+/* Papers wrapper (full width on mobile) */
+.papers-wrapper {
+    width: 100%;
+}
+
+/* Grid of paper cards */
+.papers-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+/* Pagination placeholder styling */
+.error-text {
+    color: #dc2626; /* red-600 */
+}
+
+/* Desktop layout: two columns */
+@media (min-width: 768px) {
+    .catalog-inner {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .sidebar-wrapper {
+        flex: 0 0 250px; /* fix width for sidebar */
+    }
+    .papers-wrapper {
+        flex: 1;
+    }
+    .papers-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Larger desktop: widen grid */
+@media (min-width: 1024px) {
+    .papers-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

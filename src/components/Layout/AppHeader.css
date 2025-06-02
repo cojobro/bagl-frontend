@@ -1,0 +1,61 @@
+/* Mobile‐first styles */
+.app-header {
+    width: 100%;
+    background-color: #1f2937; /* dark gray */
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0.5rem 1rem;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: none; /* hide on mobile, show via media query */
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem;
+    font-size: 0.9rem;
+    position: relative;
+    padding: 0.25rem 0;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #10b981; /* teal accent */
+}
+
+.search-container {
+    flex: 1;
+    margin-left: 1rem;
+}
+
+/* Desktop view (≥ 768px) */
+@media (min-width: 768px) {
+    .nav-links {
+        display: flex;
+    }
+    .search-container {
+        max-width: 300px;
+    }
+}
