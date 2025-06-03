@@ -4,13 +4,14 @@ import { useState, useEffect } from 'react';
 import mockPapers from '../data/mockPapers';
 
 /**
-* useFetchPapers (mock version)
-*  - Ignores page/filters/searchQuery for now and simply returns the full mock list
-*/
+ * useFetchPapers (mock version)
+ *   - Ignores filters & searchQuery when deciding whether to re‐fetch.
+ *   - Returns all mockPapers once, then never flickers again.
+ */
 export default function useFetchPapers({
     page = 1,
     pageSize = 20,
-    filters = {},
+    filters = {}, // not depended on but still accepted
     searchQuery = '',
 }) {
     const [papers, setPapers] = useState([]);
@@ -20,22 +21,26 @@ export default function useFetchPapers({
 
     useEffect(() => {
         let isCancelled = false;
+
         async function loadMockData() {
         setLoading(true);
         setError(null);
 
         try {
-            // Simulate a tiny delay so the “Loading…” text is visible
+            // simulate a short delay so the “Loading…” text is visible
             await new Promise((r) => setTimeout(r, 200));
             if (!isCancelled) {
-            // For now: ignore filters/searchQuery/page; return all mockPapers
             setPapers(mockPapers);
             setTotalCount(mockPapers.length);
             }
         } catch (err) {
-            if (!isCancelled) setError('Failed to load mock papers');
+            if (!isCancelled) {
+            setError('Failed to load mock papers');
+            }
         } finally {
-            if (!isCancelled) setLoading(false);
+            if (!isCancelled) {
+            setLoading(false);
+            }
         }
         }
 
@@ -43,7 +48,8 @@ export default function useFetchPapers({
         return () => {
         isCancelled = true;
         };
-    }, [page, pageSize, filters, searchQuery]);
+    // Only re‐run when page or pageSize changes.  We omit filters & searchQuery entirely.
+    }, [page, pageSize]);
 
     return { papers, totalCount, loading, error };
 }
