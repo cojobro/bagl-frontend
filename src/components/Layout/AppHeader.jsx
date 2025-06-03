@@ -30,6 +30,12 @@ export default function AppHeader() {
             >
                 Catalog
             </Link>
+            <Link
+                to="/rag-search"
+                className={`nav-link ${pathname === '/rag-search' ? 'active' : ''}`}
+            >
+                RAG Search
+            </Link>
             {/* Future links: About, Admin, etc. */}
             </nav>
 
