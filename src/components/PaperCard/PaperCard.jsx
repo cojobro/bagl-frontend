@@ -7,7 +7,10 @@ import './PaperCard.css';
  *   - paper: { id, title, authors: string[], year, tags: string[] }
  */
 export default function PaperCard({ paper }) {
-    const { id, title, authors = [], year, tags = [] } = paper;
+    const { id, title, authors = [], year, tags = [], pdf } = paper;
+
+    // If `paper.pdf` is provided, use that; otherwise fallback to API URL
+    const downloadUrl = pdf || `${process.env.REACT_APP_API_BASE_URL}/papers/${id}/pdf`;
 
     return (
         <div className="paper-card">
@@ -30,12 +33,12 @@ export default function PaperCard({ paper }) {
                 Details
                 </Link>
                 <a
-                href={`${process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000/api'}/papers/${id}/pdf`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="action-button secondary"
+                    href={downloadUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="action-button secondary"
                 >
-                Download
+                    Download
                 </a>
             </div>
         </div>

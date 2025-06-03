@@ -5,6 +5,7 @@ import AppFooter from './components/Layout/AppFooter';
 
 import HomePage from './pages/HomePage';
 import CatalogPage from './pages/CatalogPage';
+import PaperDetailPage from './pages/PaperDetailPage';
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/catalog" element={<CatalogPage />} />
+                    <Route path="/papers/:id" element={<PaperDetailPage />} />
                     {/* Future: /papers/:id, /search */}
                 </Routes>
             </main>

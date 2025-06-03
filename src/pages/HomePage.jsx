@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 import useFetchPapers from '../hooks/useFetchPapers';
 import PaperCard from '../components/PaperCard/PaperCard';
 import SearchBar from '../components/SearchBar/SearchBar';
 import './HomePage.css';
 
 export default function HomePage() {
+    const homeFilters = useMemo(() => ({}), []);
     // For “featured papers,” we’ll just fetch the first page and take the first 3 for now.
     const { papers, loading, error } = useFetchPapers({
         page: 1,
         pageSize: 3,
-        filters: {},
+        filters: homeFilters,
         searchQuery: '',
     });
 
