@@ -1,0 +1,39 @@
+.recommendation-list {
+    flex: 1;
+    border: 1px solid #e5e7eb; /* gray-200 */
+    border-radius: 0.5rem;
+    padding: 1rem;
+    background-color: #ffffff;
+}
+
+.recommendation-list h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    color: #111827; /* gray-900 */
+}
+
+.recommendation-list p {
+    color: #6b7280; /* gray-500 */
+    font-size: 0.9rem;
+}
+
+.recommendation-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 0.75rem;
+}
+
+/* On wider screens, show two columns */
+@media (min-width: 768px) {
+    .recommendation-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* On very large screens, show three columns */
+@media (min-width: 1024px) {
+    .recommendation-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
