@@ -23,7 +23,7 @@
 }
 
 .nav-links {
-    display: none; /* hide on mobile, show via media query */
+    display: none; /* hide on mobile view */
 }
 
 .nav-link {

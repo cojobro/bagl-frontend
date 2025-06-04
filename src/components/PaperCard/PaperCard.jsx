@@ -4,7 +4,7 @@ import './PaperCard.css';
 
 /**
  * Receives:
- *   - paper: { id, title, authors: string[], year, tags: string[] }
+ *   - paper: { id, title, authors: string[], year, tags: string[] }  <- added paper for mock data
  */
 export default function PaperCard({ paper }) {
     const { id, title, authors = [], year, tags = [], pdf } = paper;

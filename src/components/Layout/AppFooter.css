@@ -1,7 +1,7 @@
 .app-footer {
     width: 100%;
-    background-color: #f3f4f6; /* light gray */
-    color: #374151; /* dark gray text */
+    background-color: #f3f4f6;
+    color: #374151;
     padding: 1rem;
     text-align: center;
     font-size: 0.9rem;
@@ -9,7 +9,7 @@
 }
 
 .footer-content a {
-    color: #2563eb; /* blue link */
+    color: #2563eb;
     text-decoration: none;
 }
 

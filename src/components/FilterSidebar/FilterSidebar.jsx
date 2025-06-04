@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './FilterSidebar.css';
 
-/**
- * Props: 
- *   - availableTags: string[]
- *   - availableYears: number[]
- *   - availableAuthors: string[]
- *   - selectedFilters: { tags: string[], year: number | null, authors: string[] }
- *   - onChange: (newFilters) => void
- */
 export default function FilterSidebar({
     availableTags = [],
     availableYears = [],

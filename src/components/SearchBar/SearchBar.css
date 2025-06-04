@@ -24,6 +24,11 @@
     padding: 0 0.75rem;
     border: 1px solid #2563eb;
     border-radius: 0 0.375rem 0.375rem 0;
+    text-shadow:
+        1px 1px 0 lightblue,
+        -1px -1px 0 lightblue,
+        1px -1px 0 lightblue,
+        -.75px .75px 0 lightblue;
     font-size: 1rem;
     cursor: pointer;
 }

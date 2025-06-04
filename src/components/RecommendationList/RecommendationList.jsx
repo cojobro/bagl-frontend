@@ -5,10 +5,9 @@ import './RecommendationList.css';
 
 /**
  * Shows “related” papers by simply filtering out the current paper.
- * In a real app, you’d call an API (e.g. useRecommend hook).
+ * In the future use a way of scoring similarity based off similar keywords/tokens
  */
 export default function RecommendationList({ paperId }) {
-    // Filter out the current paper; show all others as “related”
     const related = useMemo(() => {
         return mockPapers.filter((p) => p.id !== paperId);
     }, [paperId]);
