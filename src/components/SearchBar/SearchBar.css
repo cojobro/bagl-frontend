@@ -27,6 +27,8 @@
     text-shadow:
         1px 1px 0 lightblue,
         -1px -1px 0 lightblue,
+        0px -1.5px 0 lightblue,
+        1.25px 0px 0 lightblue,
         1px -1px 0 lightblue,
         -.75px .75px 0 lightblue;
     font-size: 1rem;
