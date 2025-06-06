@@ -8,7 +8,7 @@ import FilterSidebar from '../components/FilterSidebar/FilterSidebar';
 import './CatalogPage.css';
 
 export default function CatalogPage() {
-    // 1) Read `?q=...` from the URL
+    // 1) Read "q=___" from URL
     const [searchParams] = useSearchParams();
     const initialQuery = searchParams.get('q')?.trim() || '';
 
@@ -16,15 +16,15 @@ export default function CatalogPage() {
     const [filters, setFilters] = useState({ tags: [], year: null, authors: [] });
     const [page] = useState(1);
 
-    // 3) Fetch all papers (mockData for now). We pass an empty filters object here to avoid flicker.
+    // 3) Fetch all papers (hopefully will migrate to a separate database).
     const { papers, loading, error } = useFetchPapers({
         page,
         pageSize: 12,
         filters: {},
-        searchQuery: initialQuery, // hook ignores this, but we’ll use initialQuery below
+        searchQuery: initialQuery,
     });
 
-    // 4) Derive the available filter options from the full list of `papers`
+    // 4) Pulls the filters from the papers loaded
     const availableTags = useMemo(() => {
         const tagSet = new Set();
         papers.forEach((paper) => {
@@ -50,12 +50,12 @@ export default function CatalogPage() {
         .sort((a, b) => b - a);
     }, [papers]);
 
-    // 5) Client‐side filtering: apply searchQuery AND selected tags/authors/year
+    // 5) apply search and filters
     const filteredPapers = useMemo(() => {
         const q = initialQuery.toLowerCase();
 
         return papers.filter((paper) => {
-        // --- (A) Text search (title, authors, tags) if q is non‐empty ---
+        // #1 Text search (title, authors, tags) if q is non‐empty
         if (q) {
             const inTitle = paper.title.toLowerCase().includes(q);
 
@@ -74,7 +74,7 @@ export default function CatalogPage() {
             }
         }
 
-        // --- (B) Tag filter: if filters.tags is non‐empty, require at least one match ---
+        // #2 Tag filter
         if (filters.tags.length > 0) {
             const paperTags = Array.isArray(paper.tags) ? paper.tags : [];
             const hasMatchingTag = filters.tags.some((tag) =>
@@ -83,7 +83,7 @@ export default function CatalogPage() {
             if (!hasMatchingTag) return false;
         }
 
-        // --- (C) Author filter: if filters.authors is non‐empty, require at least one match ---
+        // #3 Author filter
         if (filters.authors.length > 0) {
             const paperAuthors = Array.isArray(paper.authors)
             ? paper.authors
@@ -94,7 +94,7 @@ export default function CatalogPage() {
             if (!hasMatchingAuthor) return false;
         }
 
-        // --- (D) Year filter: if filters.year is set, require exact match ---
+        // #4 Year filter
         if (filters.year != null) {
             if (Number(paper.year) !== Number(filters.year)) return false;
         }
@@ -110,29 +110,28 @@ export default function CatalogPage() {
 
         <div className="catalog-inner">
             <div className="sidebar-wrapper">
-            <FilterSidebar
-                availableTags={availableTags}
-                availableYears={availableYears}
-                availableAuthors={availableAuthors}
-                selectedFilters={filters}
-                onChange={(newFilters) => {
-                setFilters(newFilters);
-                }}
-            />
+                <FilterSidebar
+                    availableTags={availableTags}
+                    availableYears={availableYears}
+                    availableAuthors={availableAuthors}
+                    selectedFilters={filters}
+                    onChange={(newFilters) => {
+                    setFilters(newFilters);
+                    }}
+                />
             </div>
 
             <div className="papers-wrapper">
-            {loading && <p>Loading papers…</p>}
-            {error && <p className="error-text">Error: {error}</p>}
-            {!loading && !error && filteredPapers.length === 0 && (
-                <p>No papers match the selected search/filters.</p>
-            )}
-            <div className="papers-grid">
-                {filteredPapers.map((paper) => (
-                <PaperCard key={paper.id} paper={paper} />
-                ))}
-            </div>
-            {/* TODO: Pagination controls here, based on filteredPapers.length */}
+                {loading && <p>Loading papers…</p>}
+                {error && <p className="error-text">Error: {error}</p>}
+                {!loading && !error && filteredPapers.length === 0 && (
+                    <p>No papers match the selected search/filters.</p>
+                )}
+                <div className="papers-grid">
+                    {filteredPapers.map((paper) => (
+                    <PaperCard key={paper.id} paper={paper} />
+                    ))}
+                </div>
             </div>
         </div>
         </div>
