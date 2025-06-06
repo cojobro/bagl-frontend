@@ -58,7 +58,6 @@ export default function PaperDetailPage() {
         </div>
 
         <div className="pdf-viewer-container">
-            {/* Inline PDF viewer using an iframe */}
             <iframe
             src={pdf}
             title={`PDF Viewer - ${title}`}
