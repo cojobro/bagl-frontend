@@ -35,7 +35,7 @@ const mockPapers = [
         title: "Clinical Validation Study of Percutaneous Cochlear Access Using Patient-Customized Microstereotactic Frames",
         authors: ["Robert F. Labadie", "Ramya Balachandran", "Jason E. Mitchell", "Jack H. Noble", "Omid Majdani","David S. Haynes", "Marc L. Bennett", "Benoit M. Dawant","J. Michael Fitzpatrick"],
         year: 2009,
-        tags: ["Equipment Design", "Coclea", "Individuality", "Surgical"],
+        tags: ["Equipment Design", "Cochlea", "Individuality", "Surgical"],
         pdf: "/papers/paper4.pdf",
     },
     {

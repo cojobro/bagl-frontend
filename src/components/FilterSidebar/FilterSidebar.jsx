@@ -12,18 +12,17 @@ export default function FilterSidebar({
     const [year, setYear] = useState(selectedFilters.year);
     const [authors, setAuthors] = useState(selectedFilters.authors);
 
-    // Whenever local state changes, notify parent
     useEffect(() => {
         onChange({ tags, year, authors });
     }, [tags, year, authors]);
 
-    function toggleTag(tag) {
+    function toggleTag(tag) { // filters based on tag
         setTags((prev) =>
         prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
         );
     }
 
-    function toggleAuthor(author) {
+    function toggleAuthor(author) { // filters based on author
         setAuthors((prev) =>
         prev.includes(author)
             ? prev.filter((a) => a !== author)
@@ -31,7 +30,7 @@ export default function FilterSidebar({
         );
     }
 
-    function clearAll() {
+    function clearAll() { // resets the tags
         setTags([]);
         setYear(null);
         setAuthors([]);
