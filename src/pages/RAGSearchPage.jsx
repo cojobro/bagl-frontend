@@ -19,7 +19,7 @@ export default function RAGSearchPage() {
         <div className="rag-search-container">
             <h2 className="rag-search-title">RAG Paper Recommendation</h2>
             <p className="rag-search-subtitle">
-                Enter a specialized query below (e.g. “deep learning MRI segmentation”) to get AI-driven paper recommendations.
+                Enter a specialized query below (e.g. “Papers that detail surgical tool design”) to get AI-driven paper recommendations.
             </p>
 
             <form className="rag-search-form" onSubmit={handleSubmit}>
