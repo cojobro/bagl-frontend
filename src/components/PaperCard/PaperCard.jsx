@@ -22,7 +22,7 @@ export default function PaperCard({ paper }) {
             <p className="paper-authors">{authors.join(', ')}</p>
             <p className="paper-year">{year}</p>
             <div className="paper-tags">
-                {tags.slice(0, 3).map((tag) => (
+                {tags.slice(0, 5).map((tag) => (
                 <span key={tag} className="paper-tag">
                     {tag}
                 </span>

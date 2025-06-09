@@ -4,10 +4,10 @@ import mockPapers from '../data/mockPapers';
 /**
  * useRagRecommend
  *   - Accepts: { query: string }
- *   - Returns: { recommendations: Array<Paper>, loading: boolean, error: string|null }
- * 
- * Currently: we simulate a RAG call by returning all mockPapers
- * after a short timeout. Replace with real fetch to /api/recommend when backend is ready.
+ *   - Returns: { recommendations: Array<Paper & { similarity: number }>, loading: boolean, error: string|null }
+ *
+ * Fetches real recommendations from the backend `/api/recommend` endpoint,
+ * enriches mockPapers with similarity scores, and sorts descending by similarity.
  */
 export default function useRagRecommend(query) {
     const [recommendations, setRecommendations] = useState([]);
@@ -15,7 +15,7 @@ export default function useRagRecommend(query) {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        // If query is empty, clear recommendations immediately
+        // Clear state if query is empty
         if (!query.trim()) {
             setRecommendations([]);
             setError(null);
@@ -29,19 +29,41 @@ export default function useRagRecommend(query) {
             setError(null);
 
             try {
-                // Simulate network delay
-                await new Promise((r) => setTimeout(r, 500));
+                const response = await fetch(
+                    `${process.env.REACT_APP_API_BASE_URL}/api/recommend`,
+                    {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ query }),
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                // Expect array of { id, title, pdf_path, similarity }
+                const recs = await response.json();
+
+                console.log('RAG recommendations similarity:');
+                recs.forEach((r) => {
+                    console.log(`- ${r.title}: similarity ${r.similarity.toFixed(4)}`);
+                });
+
+                // Enrich mockPapers with similarity and sort by similarity
+                const enriched = recs
+                    .map((r) => {
+                        const match = mockPapers.find((p) => p.title === r.title);
+                        return match ? { ...match, similarity: r.similarity } : null;
+                    })
+                    .filter((p) => p !== null)
+                    .sort((a, b) => b.similarity - a.similarity);
 
                 if (!isCancelled) {
-                    // In a real app, call your backend:
-                    // const res = await fetch(apiBaseUrl + '/recommend', { method: 'POST', body: JSON.stringify({ query }) });
-                    // const data = await res.json();
-                    // setRecommendations(data.papers);
-
-                    // For now: just return all mockPapers
-                    setRecommendations(mockPapers);
+                    setRecommendations(enriched);
                 }
             } catch (err) {
+                console.error('Error fetching RAG recommendations:', err);
                 if (!isCancelled) {
                     setError('Failed to fetch recommendations.');
                 }

@@ -28,7 +28,9 @@ export default function CatalogPage() {
     const availableTags = useMemo(() => {
         const tagSet = new Set();
         papers.forEach((paper) => {
-        (paper.tags || []).forEach((t) => tagSet.add(t));
+            console.log(paper.title);
+            console.log(paper.tags);
+            (paper.tags || []).forEach((t) => tagSet.add(t));
         });
         return Array.from(tagSet).sort();
     }, [papers]);

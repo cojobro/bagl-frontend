@@ -7,7 +7,6 @@ export default function AppHeader() {
     const navigate = useNavigate();
     const { pathname } = useLocation();
 
-    // If user is on catalog, keep the search query in sync via SearchBar
     return (
         <header className="app-header">
         <div className="header-content">

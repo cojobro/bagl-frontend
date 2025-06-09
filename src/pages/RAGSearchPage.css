@@ -70,6 +70,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
+    align-items: stretch;   /* ensure grid items equal height */
 }
 
 /* On tablet / desktop, show 2 columns */
@@ -84,6 +85,35 @@
     .rag-results-grid {
         grid-template-columns: repeat(3, 1fr);
     }
+}
+
+.rag-result-item {
+    position: relative;
+    padding-top: 1.5rem;
+    display: flex;               /* allow inner content to stretch */
+    flex-direction: column;
+}
+
+/* Ensure the inner PaperCard expands to fill available height */
+.rag-result-item > * {
+    flex: 1 1 auto;
+}
+
+.rag-rank-badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-25%, -25%);
+    background-color: #2563eb; /* blue-600 */
+    color: white;
+    border-radius: 9999px;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    z-index: 10;
 }
 
 .rag-back-link {

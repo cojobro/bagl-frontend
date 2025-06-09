@@ -40,7 +40,7 @@
 }
 
 /* Desktop layout: two columns */
-@media (min-width: 768px) {
+@media (min-width: 890px) {
     .catalog-inner {
         flex-direction: row;
         align-items: flex-start;
@@ -52,13 +52,13 @@
         flex: 1;
     }
     .papers-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 /* Larger desktop: widen grid */
 @media (min-width: 1024px) {
     .papers-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
