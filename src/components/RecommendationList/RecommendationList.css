@@ -24,6 +24,16 @@
     margin-top: 0.75rem;
 }
 
+.recommendation-item {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.recommendation-item > * {
+    flex: 1 1 auto; /* make inner PaperCard stretch */
+}
+
 /* On wider screens, show two columns */
 @media (min-width: 768px) {
     .recommendation-grid {

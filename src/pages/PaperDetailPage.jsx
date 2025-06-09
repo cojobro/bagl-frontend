@@ -67,7 +67,7 @@ export default function PaperDetailPage() {
 
         <div className="interaction-panels">
             <SummaryPanel paperId={paperId} />
-            <RecommendationList paperId={paperId} />
+            <RecommendationList paperTitle={paper.title} />
         </div>
 
         <div className="back-link">
