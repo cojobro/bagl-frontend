@@ -51,6 +51,17 @@
     }
 }
 
+ul, ol {
+    display: inline-block;       
+    margin-top: 0px;           
+    padding: 0;                  
+    list-style-position: inside; 
+    text-align: left;            
+}
+li {
+    margin: 0.5rem 0;           
+}
+
 /* Large Screen layout: 3 columns */
 @media (min-width: 1024px) {
     .featured-grid {

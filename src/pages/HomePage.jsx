@@ -20,9 +20,24 @@ export default function HomePage() {
                 <p className="hero-subtitle">
                 Browse, summarize, and discover cutting‐edge biomedical image analysis papers from Vanderbilt’s BAGL.
                 </p>
-                <div className="hero-search">
+                <section>
+                    <p>
+                    Biomedical image analysis techniques are transforming the way many clinical interventions are performed and enabling the creation of new computer‐assisted interventions and surgical procedures. The Biomedical Image Analysis for Image‐Guided Interventions Laboratory (BAGL) investigates novel medical image processing and analysis techniques with emphasis on creating image analysis–based solutions to clinical problems.
+                    </p>
+
+                    <h3>Core Techniques</h3>
+                    <ul>
+                        <li>Deep learning</li>
+                        <li>Statistical shape models</li>
+                        <li>Graph search methods</li>
+                        <li>Level set techniques</li>
+                        <li>Image registration techniques</li>
+                        <li>Image‐based bio‐models</li>
+                    </ul>
+                </section>
+                {/* <div className="hero-search">
                 <SearchBar />
-                </div>
+                </div> */}
             </section>
 
             <section className="featured-section">
